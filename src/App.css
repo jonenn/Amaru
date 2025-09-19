@@ -1,0 +1,59 @@
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app-header {
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+}
+
+.instructions {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: left;
+  margin: 2rem 0;
+}
+
+.instructions h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.instructions ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.instructions li {
+  margin-bottom: 0.5rem;
+  color: #34495e;
+}
+
+.instructions p {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #e8f4f8;
+  border-radius: 4px;
+}
+
+.instructions code {
+  background: #2c3e50;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+}

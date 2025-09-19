@@ -1,0 +1,258 @@
+{
+  "demands": [
+    {
+      "id": 1,
+      "name": "Demanda Laboral - Despido Injustificado",
+      "client": "Pedro Martínez García",
+      "description": "Proceso laboral por despido sin justa causa y liquidación incorrecta de prestaciones sociales.",
+      "tags": ["laboral", "urgente", "despido"],
+      "documents": [
+        {
+          "id": 1,
+          "name": "Contrato de Trabajo.pdf",
+          "type": "contrato"
+        },
+        {
+          "id": 2,
+          "name": "Carta de Despido.pdf",
+          "type": "comunicacion"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Demanda Civil - Incumplimiento Contractual",
+      "client": "Transportes del Norte S.A.S",
+      "description": "Demanda por incumplimiento de contrato de transporte y daños económicos.",
+      "tags": ["civil", "comercial", "incumplimiento"],
+      "documents": [
+        {
+          "id": 3,
+          "name": "Contrato de Transporte.pdf",
+          "type": "contrato"
+        },
+        {
+          "id": 4,
+          "name": "Facturas Pendientes.pdf",
+          "type": "factura"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Demanda de Divorcio Contencioso",
+      "client": "Carlos Jiménez Ruiz",
+      "description": "Proceso de divorcio contencioso con liquidación de sociedad conyugal y custodia de menores.",
+      "tags": ["familia", "divorcio", "custodia"],
+      "documents": [
+        {
+          "id": 5,
+          "name": "Registro Civil Matrimonio.pdf",
+          "type": "registro"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Demanda Ejecutiva - Cobro de Pagaré",
+      "client": "Financiera Express Ltda",
+      "description": "Proceso ejecutivo para el cobro de pagaré vencido y no pagado.",
+      "tags": ["ejecutivo", "financiero", "cobro"],
+      "documents": [
+        {
+          "id": 6,
+          "name": "Pagaré Original.pdf",
+          "type": "titulo_valor"
+        },
+        {
+          "id": 7,
+          "name": "Liquidación de Deuda.pdf",
+          "type": "liquidacion"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Demanda Penal - Estafa y Abuso de Confianza",
+      "client": "Ana García López",
+      "description": "Denuncia penal por estafa mediante cheque sin fondos y abuso de confianza.",
+      "tags": ["penal", "estafa", "urgente"],
+      "documents": [
+        {
+          "id": 8,
+          "name": "Cheques Devueltos.pdf",
+          "type": "evidencia"
+        },
+        {
+          "id": 9,
+          "name": "Denuncia Fiscalía.pdf",
+          "type": "denuncia"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Demanda Administrativa - Nulidad y Restablecimiento",
+      "client": "Constructora del Valle S.A.S",
+      "description": "Demanda contra acto administrativo que negó licencia de construcción.",
+      "tags": ["administrativo", "construccion", "licencia"],
+      "documents": [
+        {
+          "id": 10,
+          "name": "Resolución Negativa.pdf",
+          "type": "acto_administrativo"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Demanda Comercial - Competencia Desleal",
+      "client": "Tech Solutions Ltda",
+      "description": "Demanda por competencia desleal y violación de secretos empresariales.",
+      "tags": ["comercial", "competencia", "secretos"],
+      "documents": [
+        {
+          "id": 11,
+          "name": "Contratos de Confidencialidad.pdf",
+          "type": "contrato"
+        },
+        {
+          "id": 12,
+          "name": "Evidencias Competencia.pdf",
+          "type": "evidencia"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Demanda de Responsabilidad Civil",
+      "client": "María Rodríguez Vásquez",
+      "description": "Demanda por daños y perjuicios causados en accidente de tránsito.",
+      "tags": ["civil", "transito", "daños"],
+      "documents": [
+        {
+          "id": 13,
+          "name": "Informe Policial.pdf",
+          "type": "informe"
+        },
+        {
+          "id": 14,
+          "name": "Facturas Médicas.pdf",
+          "type": "factura"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Demanda Societaria - Disolución de Sociedad",
+      "client": "Socios Fundadores S.A.S",
+      "description": "Proceso de disolución y liquidación de sociedad por diferencias irreconciliables.",
+      "tags": ["societario", "disolucion", "comercial"],
+      "documents": [
+        {
+          "id": 15,
+          "name": "Estatutos Sociales.pdf",
+          "type": "estatutos"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Demanda Laboral - Accidente de Trabajo",
+      "client": "Industrias Unidas S.A",
+      "description": "Demanda por accidente laboral y falta de medidas de seguridad industrial.",
+      "tags": ["laboral", "accidente", "seguridad"],
+      "documents": [
+        {
+          "id": 16,
+          "name": "Reporte de Accidente.pdf",
+          "type": "reporte"
+        },
+        {
+          "id": 17,
+          "name": "Historia Clínica.pdf",
+          "type": "medico"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Demanda de Nulidad Matrimonial",
+      "client": "Familia González Pérez",
+      "description": "Proceso de nulidad matrimonial por vicios de consentimiento.",
+      "tags": ["familia", "nulidad", "matrimonio"],
+      "documents": [
+        {
+          "id": 18,
+          "name": "Certificados Médicos.pdf",
+          "type": "medico"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Demanda Tributaria - Controversia DIAN",
+      "client": "Distribuidora Central Ltda",
+      "description": "Controversia tributaria por liquidación oficial de impuestos y sanciones.",
+      "tags": ["tributario", "dian", "impuestos"],
+      "documents": [
+        {
+          "id": 19,
+          "name": "Liquidación Oficial.pdf",
+          "type": "liquidacion"
+        },
+        {
+          "id": 20,
+          "name": "Declaraciones Tributarias.pdf",
+          "type": "declaracion"
+        }
+      ]
+    }
+  ],
+  "available_tags": [
+    "laboral",
+    "civil",
+    "penal",
+    "administrativo",
+    "comercial",
+    "familia",
+    "ejecutivo",
+    "societario",
+    "tributario",
+    "urgente",
+    "despido",
+    "incumplimiento",
+    "divorcio",
+    "custodia",
+    "financiero",
+    "cobro",
+    "estafa",
+    "construccion",
+    "licencia",
+    "competencia",
+    "secretos",
+    "transito",
+    "daños",
+    "disolucion",
+    "accidente",
+    "seguridad",
+    "nulidad",
+    "matrimonio",
+    "dian",
+    "impuestos"
+  ],
+  "available_clients": [
+    "Pedro Martínez García",
+    "Transportes del Norte S.A.S",
+    "Carlos Jiménez Ruiz",
+    "Financiera Express Ltda",
+    "Ana García López",
+    "Constructora del Valle S.A.S",
+    "Tech Solutions Ltda",
+    "María Rodríguez Vásquez",
+    "Socios Fundadores S.A.S",
+    "Industrias Unidas S.A",
+    "Familia González Pérez",
+    "Distribuidora Central Ltda"
+  ]
+}

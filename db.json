@@ -5,7 +5,8 @@
       "name": "Demanda Laboral - Despido Injustificado",
       "client": "Pedro Martínez García",
       "description": "Proceso laboral por despido sin justa causa y liquidación incorrecta de prestaciones sociales.",
-      "tags": ["laboral", "urgente", "despido"],
+      "demandType": "laboral",
+      "status": "abierta",
       "documents": [
         {
           "id": 1,
@@ -24,7 +25,8 @@
       "name": "Demanda Civil - Incumplimiento Contractual",
       "client": "Transportes del Norte S.A.S",
       "description": "Demanda por incumplimiento de contrato de transporte y daños económicos.",
-      "tags": ["civil", "comercial", "incumplimiento"],
+      "demandType": "civil",
+      "status": "cerrada",
       "documents": [
         {
           "id": 3,
@@ -43,7 +45,8 @@
       "name": "Demanda de Divorcio Contencioso",
       "client": "Carlos Jiménez Ruiz",
       "description": "Proceso de divorcio contencioso con liquidación de sociedad conyugal y custodia de menores.",
-      "tags": ["familia", "divorcio", "custodia"],
+      "demandType": "familia",
+      "status": "abierta",
       "documents": [
         {
           "id": 5,
@@ -57,7 +60,8 @@
       "name": "Demanda Ejecutiva - Cobro de Pagaré",
       "client": "Financiera Express Ltda",
       "description": "Proceso ejecutivo para el cobro de pagaré vencido y no pagado.",
-      "tags": ["ejecutivo", "financiero", "cobro"],
+      "demandType": "ejecutivo",
+      "status": "abierta",
       "documents": [
         {
           "id": 6,
@@ -76,7 +80,8 @@
       "name": "Demanda Penal - Estafa y Abuso de Confianza",
       "client": "Ana García López",
       "description": "Denuncia penal por estafa mediante cheque sin fondos y abuso de confianza.",
-      "tags": ["penal", "estafa", "urgente"],
+      "demandType": "penal",
+      "status": "cerrada",
       "documents": [
         {
           "id": 8,
@@ -95,7 +100,8 @@
       "name": "Demanda Administrativa - Nulidad y Restablecimiento",
       "client": "Constructora del Valle S.A.S",
       "description": "Demanda contra acto administrativo que negó licencia de construcción.",
-      "tags": ["administrativo", "construccion", "licencia"],
+      "demandType": "administrativo",
+      "status": "abierta",
       "documents": [
         {
           "id": 10,
@@ -109,7 +115,8 @@
       "name": "Demanda Comercial - Competencia Desleal",
       "client": "Tech Solutions Ltda",
       "description": "Demanda por competencia desleal y violación de secretos empresariales.",
-      "tags": ["comercial", "competencia", "secretos"],
+      "demandType": "comercial",
+      "status": "abierta",
       "documents": [
         {
           "id": 11,
@@ -128,7 +135,8 @@
       "name": "Demanda de Responsabilidad Civil",
       "client": "María Rodríguez Vásquez",
       "description": "Demanda por daños y perjuicios causados en accidente de tránsito.",
-      "tags": ["civil", "transito", "daños"],
+      "demandType": "civil",
+      "status": "cerrada",
       "documents": [
         {
           "id": 13,
@@ -147,7 +155,8 @@
       "name": "Demanda Societaria - Disolución de Sociedad",
       "client": "Socios Fundadores S.A.S",
       "description": "Proceso de disolución y liquidación de sociedad por diferencias irreconciliables.",
-      "tags": ["societario", "disolucion", "comercial"],
+      "demandType": "societario",
+      "status": "abierta",
       "documents": [
         {
           "id": 15,
@@ -161,7 +170,8 @@
       "name": "Demanda Laboral - Accidente de Trabajo",
       "client": "Industrias Unidas S.A",
       "description": "Demanda por accidente laboral y falta de medidas de seguridad industrial.",
-      "tags": ["laboral", "accidente", "seguridad"],
+      "demandType": "laboral",
+      "status": "cerrada",
       "documents": [
         {
           "id": 16,
@@ -180,7 +190,8 @@
       "name": "Demanda de Nulidad Matrimonial",
       "client": "Familia González Pérez",
       "description": "Proceso de nulidad matrimonial por vicios de consentimiento.",
-      "tags": ["familia", "nulidad", "matrimonio"],
+      "demandType": "familia",
+      "status": "abierta",
       "documents": [
         {
           "id": 18,
@@ -194,7 +205,8 @@
       "name": "Demanda Tributaria - Controversia DIAN",
       "client": "Distribuidora Central Ltda",
       "description": "Controversia tributaria por liquidación oficial de impuestos y sanciones.",
-      "tags": ["tributario", "dian", "impuestos"],
+      "demandType": "tributario",
+      "status": "abierta",
       "documents": [
         {
           "id": 19,
@@ -209,7 +221,7 @@
       ]
     }
   ],
-  "available_tags": [
+  "available_demand_types": [
     {"id": 1, "name": "laboral"},
     {"id": 2, "name": "civil"},
     {"id": 3, "name": "penal"},
@@ -218,28 +230,11 @@
     {"id": 6, "name": "familia"},
     {"id": 7, "name": "ejecutivo"},
     {"id": 8, "name": "societario"},
-    {"id": 9, "name": "tributario"},
-    {"id": 10, "name": "urgente"},
-    {"id": 11, "name": "despido"},
-    {"id": 12, "name": "incumplimiento"},
-    {"id": 13, "name": "divorcio"},
-    {"id": 14, "name": "custodia"},
-    {"id": 15, "name": "financiero"},
-    {"id": 16, "name": "cobro"},
-    {"id": 17, "name": "estafa"},
-    {"id": 18, "name": "construccion"},
-    {"id": 19, "name": "licencia"},
-    {"id": 20, "name": "competencia"},
-    {"id": 21, "name": "secretos"},
-    {"id": 22, "name": "transito"},
-    {"id": 23, "name": "daños"},
-    {"id": 24, "name": "disolucion"},
-    {"id": 25, "name": "accidente"},
-    {"id": 26, "name": "seguridad"},
-    {"id": 27, "name": "nulidad"},
-    {"id": 28, "name": "matrimonio"},
-    {"id": 29, "name": "dian"},
-    {"id": 30, "name": "impuestos"}
+    {"id": 9, "name": "tributario"}
+  ],
+  "available_statuses": [
+    {"id": 1, "name": "abierta"},
+    {"id": 2, "name": "cerrada"}
   ],
   "available_clients": [
     {"id": 1, "name": "Pedro Martínez García"},

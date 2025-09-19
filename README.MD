@@ -37,23 +37,24 @@ npm run dev:full
 - **12 cards de demandas** en grid responsivo
 - Cada card muestra:
   - **Nombre** de la demanda
-  - **Etiquetas** (array de tags/chips)
+  - **Tipo de demanda** (single tag/chip)
   - **Cliente**
   - **Descripción**
+  - **Estado** (abierta/cerrada)
   - **Documentos asociados** (máximo 2)
 - **Responsivo:** 1 columna (mobile), 2-3 (tablet), 4+ (desktop)
 
 ### 2. Búsqueda Global
 - Barra de búsqueda que filtra por **cualquier campo** del card
 - Búsqueda en tiempo real
-- Busca en: nombre, etiquetas, cliente, descripción
+- Busca en: nombre, tipo de demanda, cliente, descripción
 
 ### 3. Sistema de Filtros
 - **Botón "Filtrar"** que abre modal
 - Modal con filtros **checkbox** para selección múltiple:
-  - Por etiquetas
+  - Por tipo de demanda
   - Por cliente
-  - Por estado (si aplica)
+  - Por estado (abierta/cerrada)
 - **Chips de filtros activos** visibles debajo de la búsqueda
 - Opción de **quitar filtros uno por uno** (click en chip)
 - Botón **"Resetear filtros"**
@@ -73,16 +74,20 @@ API disponible en `http://localhost:3001`:
 ```bash
 GET /demands                               # Todas las demandas (12 items)
 GET /demands?q=busqueda                   # Búsqueda global en todos los campos
-GET /demands?tags_like=urgente            # Filtrar por etiqueta
-GET /demands?client_like=cliente          # Filtrar por cliente
-GET /available_tags                       # Todas las etiquetas disponibles
+GET /demands?demandType=laboral          # Filtrar por tipo de demanda exacto
+GET /demands?status=abierta               # Filtrar por estado exacto
+GET /demands?client=Pedro%20Martínez%20García  # Filtrar por cliente exacto (URL encoded)
+GET /demands?demandType=civil&status=cerrada   # Filtros combinados
+GET /available_demand_types               # Todos los tipos de demanda disponibles
+GET /available_statuses                   # Todos los estados disponibles
 GET /available_clients                    # Todos los clientes disponibles
 ```
 
 ### Estructura de Datos
 Cada demanda incluye:
 - `id`, `name`, `client`, `description`
-- `tags`: array de etiquetas
+- `demandType`: tipo de demanda (string)
+- `status`: estado de la demanda ("abierta" o "cerrada")
 - `documents`: array de documentos asociados (máximo 2)
 
 ## 📝 Entregables
@@ -91,15 +96,10 @@ Cada demanda incluye:
 2. **Aplicación funcionando** con todas las funcionalidades
 3. **Responsive design** funcionando en móvil, tablet y desktop
 
-## ⏰ Tiempo Estimado
-
-**2-3 días** (es una prueba sencilla, tómate tu tiempo para hacer un buen trabajo)
-
 ## 💡 Consejos
 
-- Es una prueba **simple y directa**, no te compliques
 - Enfócate en la **funcionalidad** y que se vea bien
-- El **design system de Figma** es tu guía principal
+- El **design system de Figma** es tu guía principal, revisa el prototipo para ver las formas de abrir el modal en móvil y desktop.
 - **Pregunta si tienes dudas** durante el desarrollo
 
 ---

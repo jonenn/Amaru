@@ -46,7 +46,7 @@ npm run dev:full
 
 ### 2. Búsqueda Global
 - Barra de búsqueda que filtra por **cualquier campo** del card
-- Búsqueda en tiempo real
+- Búsqueda en tiempo real (implementada en el frontend)
 - Busca en: nombre, tipo de demanda, cliente, descripción
 
 ### 3. Sistema de Filtros
@@ -73,7 +73,6 @@ API disponible en `http://localhost:3001`:
 
 ```bash
 GET /demands                               # Todas las demandas (12 items)
-GET /demands?q=busqueda                   # Búsqueda global en todos los campos
 GET /demands?demandType=laboral          # Filtrar por tipo de demanda exacto
 GET /demands?status=abierta               # Filtrar por estado exacto
 GET /demands?client=Pedro%20Martínez%20García  # Filtrar por cliente exacto (URL encoded)
@@ -81,6 +80,10 @@ GET /demands?demandType=civil&status=cerrada   # Filtros combinados
 GET /available_demand_types               # Todos los tipos de demanda disponibles
 GET /available_statuses                   # Todos los estados disponibles
 GET /available_clients                    # Todos los clientes disponibles
+
+# ⚠️ NOTA: Para búsqueda global, usar filtros en el frontend
+# 1. Obtener todas las demandas con GET /demands
+# 2. Filtrar en JavaScript con .filter() por nombre, cliente, descripción, etc.
 ```
 
 ### Estructura de Datos

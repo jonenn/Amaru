@@ -30,6 +30,62 @@
 
 .instructions h2 {
   color: #2c3e50;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+.feature-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 6px;
+  border-left: 4px solid #007bff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.feature-section h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.api-info {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #e8f4f8;
+  border-radius: 6px;
+  border-left: 4px solid #17a2b8;
+}
+
+.api-info h3 {
+  color: #0c5460;
+  margin-bottom: 1rem;
+}
+
+.data-structure {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #fff3cd;
+  border-radius: 6px;
+  border-left: 4px solid #ffc107;
+}
+
+.data-structure h3 {
+  color: #856404;
+  margin-bottom: 1rem;
+}
+
+.tech-stack {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #d4edda;
+  border-radius: 6px;
+  border-left: 4px solid #28a745;
+}
+
+.tech-stack h3 {
+  color: #155724;
   margin-bottom: 1rem;
 }
 
@@ -41,19 +97,22 @@
 .instructions li {
   margin-bottom: 0.5rem;
   color: #34495e;
+  line-height: 1.5;
 }
 
 .instructions p {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background: #e8f4f8;
-  border-radius: 4px;
+  margin-top: 1rem;
+  color: #34495e;
+  line-height: 1.6;
 }
 
 .instructions code {
   background: #2c3e50;
   color: white;
-  padding: 0.2rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 4px;
   font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+  display: inline-block;
 }

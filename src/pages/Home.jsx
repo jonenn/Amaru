@@ -5,7 +5,7 @@ import { Searchbar } from '@/components/HomeComponents/Searchbar/Searchbar';
 
 const Home = () => {
    return (
-      <div>
+      <div className="flex flex-col gap-1.5">
          <div className="flex justify-between items-center">
             <MainTitle title="Demandas Activas" />
             <div className="flex gap-2 mx-1">

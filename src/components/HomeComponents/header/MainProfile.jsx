@@ -4,7 +4,7 @@ const MainProfile = ({ name, role }) => {
          <h4 className="flex text-base font-semibold tracking-tightest leading-4 text-black-main">
             {name}
          </h4>
-         <p className="font-normal text-xs text-black-secondary tracking-tightest">
+         <p className="font-normal text-xs text-gray-main tracking-tightest">
             {role}
          </p>
       </div>

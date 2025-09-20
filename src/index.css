@@ -2,6 +2,8 @@
 
 @theme {
    --color-green-main: #20271d;
+   --color-green-hover: #303d2c;
+   --color-green-active: #5e9149;
    --color-white-main: #f9f9f9;
 }
 

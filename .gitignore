@@ -31,3 +31,5 @@ temp/
 
 # Vite
 .vite
+
+/fs

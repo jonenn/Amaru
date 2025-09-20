@@ -1,11 +1,10 @@
-import React from "react";
-import "./App.css";
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
    return (
-      <div>
-         <p className="text-blue-600">Tailwind is working!</p>
-      </div>
+      <>
+         <MainLayout />
+      </>
    );
 }
 

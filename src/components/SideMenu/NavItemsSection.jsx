@@ -1,5 +1,5 @@
-import { navItems } from "../utils/menuConfig";
-import NavItem from "./NavItem";
+import { navItems } from "@/utils/menuConfig";
+import NavItem from "@/components/SideMenu/NavItem";
 import { Tooltip } from "react-tooltip";
 
 const NavItemsSection = () => {

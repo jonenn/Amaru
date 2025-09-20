@@ -1,7 +1,7 @@
-import LogoSection from "./LogoSection";
-import NavItemsSection from "./NavItemsSection";
-import ActiveProfile from "./ActiveProfile";
-import LogOutButton from "./LogOutButton";
+import LogoSection from "@/components/SideMenu/LogoSection";
+import NavItemsSection from "@/components/SideMenu/NavItemsSection";
+import ActiveProfile from "@/components/SideMenu/ActiveProfile";
+import LogOutButton from "@/components/SideMenu/LogOutButton";
 
 const SideMenu = () => {
    return (

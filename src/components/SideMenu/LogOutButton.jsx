@@ -1,4 +1,4 @@
-import LogOut from "../assets/log-out.svg";
+import LogOut from "@/assets/log-out.svg";
 
 const LogOutButton = () => {
    return (

@@ -7,7 +7,7 @@ const Home = () => {
       <main className="flex flex-col gap-1.5">
          <Header />
          <Searchbar />
-         <div class="grid grid-cols-4 gap-3">
+         <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-3">
             <Card />
             <Card />
             <Card />

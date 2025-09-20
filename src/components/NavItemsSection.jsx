@@ -16,12 +16,12 @@ const NavItemsSection = () => {
                      isActive ? "bg-green-active" : ""
                   }`
                }
-               data-tooltip-id="my-tooltip"
+               data-tooltip-id="nav-tooltip"
                data-tooltip-content={item.label}
                data-tooltip-place="right"
             />
          ))}
-         <Tooltip id="my-tooltip" />
+         <Tooltip id="nav-tooltip" className="max-w-min text-center" />
       </div>
    );
 };

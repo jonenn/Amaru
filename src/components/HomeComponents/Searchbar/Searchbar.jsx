@@ -2,7 +2,7 @@ import Filter from '@/assets/filter.svg';
 
 const Searchbar = () => {
    return (
-      <div className="flex gap-4 my-3">
+      <div className="flex gap-4 my-4">
          <input
             type="search"
             id="searchbar"

@@ -12,7 +12,7 @@ const NavItemsSection = () => {
                   alt={item.label}
                   iconSrc={item.icon}
                   className={({ isActive }) =>
-                     `flex items-center px-4 py-2 rounded-lg hover:bg-green-hover ${
+                     `flex items-center px-4 py-2 rounded-[10px] hover:bg-green-hover ${
                         isActive ? "bg-green-active" : ""
                      }`
                   }

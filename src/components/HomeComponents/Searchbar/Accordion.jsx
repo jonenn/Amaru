@@ -1,8 +1,7 @@
 import Arrow from "@/assets/arrow.svg";
 import { useState } from "react";
-import FilterOptions from "./FilterOptions";
 
-const Accordion = ({ title, children, filters }) => {
+const Accordion = ({ title, children }) => {
    const [open, setOpen] = useState(false);
 
    return (
@@ -12,7 +11,7 @@ const Accordion = ({ title, children, filters }) => {
             onClick={() => setOpen(!open)}
          >
             <div className="relative leading-[2.4] tracking-tightest">
-               Cliente
+               {title}
             </div>
             <img
                src={Arrow}
@@ -27,7 +26,7 @@ const Accordion = ({ title, children, filters }) => {
                open ? "h-auto m-2" : "h-0 m-0"
             }`}
          >
-            <FilterOptions filtersData={filters} />
+            {children}
          </div>
       </>
    );

@@ -2,6 +2,7 @@ import Filter from "@/assets/filter.svg";
 import { useState } from "react";
 import PrimaryButton from "@/components/PrimaryButton";
 import Accordion from "./Accordion";
+import FilterOptions from "./FilterOptions";
 
 const stateFilters = [
    { id: "cumplido", label: "Cumplido" },
@@ -47,7 +48,9 @@ const Searchbar = () => {
                   }
                `}
             >
-               <Accordion filters={stateFilters} />
+               <Accordion title="Estado">
+                  <FilterOptions filtersData={stateFilters} />
+               </Accordion>
                <PrimaryButton>Aplicar Filtros</PrimaryButton>
             </div>
          </div>

@@ -1,6 +1,6 @@
 import Plus from "@/assets/plus.svg";
 
-const PrimaryButton = ({ children }) => {
+const PrimaryButton = ({ children, plus }) => {
    return (
       <button
          className="
@@ -11,15 +11,17 @@ const PrimaryButton = ({ children }) => {
          "
       >
          {children}
-         <img
-            src={Plus}
-            alt={children}
-            className="
+         {plus && (
+            <img
+               src={Plus}
+               alt={children}
+               className="
             w-5 h-5
             transition-transform duration-300 ease-out
             group-hover:rotate-90
             "
-         />
+            />
+         )}
       </button>
    );
 };

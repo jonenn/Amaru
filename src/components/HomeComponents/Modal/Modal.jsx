@@ -25,7 +25,7 @@ const Modal = ({
             <div className="flex flex-col gap-9">
                <Files documents={documents} />
                <div className="flex justify-end gap-3">
-                  <PrimaryButton>Resolver Demanda</PrimaryButton>
+                  <PrimaryButton plus>Resolver Demanda</PrimaryButton>
                   <SecondaryButton onClick={() => dispatch(setOpenModal())}>
                      Cancelar
                   </SecondaryButton>

@@ -8,8 +8,8 @@ const CustomCheckbox = ({ checked }) => {
         ${checked ? "" : "hover:bg-green-hover"}`}
       >
          <span
-            className={`flex justify-center items-center w-[17px] h-[17px] border border-green-active rounded-md transition-colors
-            ${checked ? "bg-green-active" : "bg-transparent"}`}
+            className={`flex justify-center items-center w-[17px] h-[17px] border border-green-title rounded-md transition-colors
+            ${checked ? "bg-green-title" : "bg-transparent"}`}
          >
             {checked && <img src={Check} alt="Checked" className="w-3 h-3" />}
          </span>

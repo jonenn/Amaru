@@ -2,13 +2,16 @@ import { Card } from "@/components/HomeComponents/Card/Card";
 import { Header } from "@/components/HomeComponents/header/Header";
 import Modal from "@/components/HomeComponents/Modal/Modal";
 import { Searchbar } from "@/components/HomeComponents/Searchbar/Searchbar";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setOpenModal } from "@/features/modal/modalSlice";
 
 const Home = () => {
-   const [openModal, setOpenModal] = useState(false);
+   const openModal = useSelector((state) => state.modal.value);
+   const dispatch = useDispatch();
+   console.log(openModal);
 
    const handleClick = (id) => {
-      setOpenModal(true);
+      dispatch(setOpenModal());
    };
 
    return (
@@ -32,7 +35,7 @@ const Home = () => {
             absolute inset-0 bg-black/30 cursor-pointer
             ${openModal ? "animate-fade-in" : "animate-fade-out"}
          `}
-                  onClick={() => setOpenModal(false)}
+                  onClick={handleClick}
                />
                <div
                   className={`

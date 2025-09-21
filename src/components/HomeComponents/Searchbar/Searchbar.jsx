@@ -1,8 +1,17 @@
-import Filter from '@/assets/filter.svg';
+import Filter from "@/assets/filter.svg";
+import Arrow from "@/assets/arrow.svg";
+import { useState } from "react";
 
 const Searchbar = () => {
+   const [filterOpen, setFilterOpen] = useState(false);
+
+   const handleOpen = () => {
+      setFilterOpen(!filterOpen);
+      console.log("It is working!");
+   };
+
    return (
-      <div className="flex gap-4 my-4">
+      <div className="flex gap-4 my-4 w-full">
          <input
             type="search"
             id="searchbar"
@@ -10,10 +19,31 @@ const Searchbar = () => {
             placeholder="Buscar"
             className="border border-gray-secondary rounded-[10px] px-3 py-2 w-1/3 bg-[url('/src/assets/search.svg')] bg-no-repeat pl-11 bg-[length:24px] bg-[position:12px_center]  placeholder-gray-tertiary text-black-search focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-tertiary bg-white"
          />
-         <button className="flex border border-gray-secondary rounded-[10px] px-3 py-2 w-1/4 text-gray-tertiary gap-2.5 bg-white cursor-pointer">
-            <img src={Filter} alt="Filter button" width={24} />
-            <p className="">Filtrar por</p>
-         </button>
+         <div className="flex relative w-1/4">
+            <button
+               className="flex border w-full border-gray-secondary rounded-[10px] px-3 py-2 text-gray-tertiary gap-2.5 bg-white cursor-pointer"
+               onClick={handleOpen}
+            >
+               <img src={Filter} alt="Filter button" width={24} />
+               <p className="">Filtrar por</p>
+            </button>
+            {filterOpen && (
+               <div className="absolute flex flex-col top-[3rem] right-0 left-0 bg-white px-4 py-3 shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm gap-3">
+                  <div className="flex border-b-1 border-black-divisor w-full justify-between cursor-pointer">
+                     <div className="relative leading-[2.4] tracking-tightest">
+                        Cliente
+                     </div>
+                     <img src={Arrow} alt="" />
+                  </div>
+                  <div className="flex border-b-1 border-black-divisor w-full justify-between cursor-pointer">
+                     <div className="relative leading-[2.4] tracking-tightest">
+                        Estado
+                     </div>
+                     <img src={Arrow} alt="" />
+                  </div>
+               </div>
+            )}
+         </div>
       </div>
    );
 };

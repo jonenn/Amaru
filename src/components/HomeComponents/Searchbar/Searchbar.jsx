@@ -1,6 +1,16 @@
 import Filter from "@/assets/filter.svg";
 import Arrow from "@/assets/arrow.svg";
+import FilterOptions from "./Filter";
 import { useState } from "react";
+
+const stateFilters = [
+   { id: "cumplido", label: "Cumplido" },
+   { id: "extemporaneo", label: "Cumplido extemporaneo" },
+];
+
+const handleStateChange = (selected) => {
+   console.log("Active filters:", selected);
+};
 
 const Searchbar = () => {
    const [filterOpen, setFilterOpen] = useState(false);
@@ -41,6 +51,12 @@ const Searchbar = () => {
                      Cliente
                   </div>
                   <img src={Arrow} alt="" />
+               </div>
+               <div className="flex m-2">
+                  <FilterOptions
+                     filtersData={stateFilters}
+                     onChange={handleStateChange}
+                  />
                </div>
                <div className="flex border-b-1 border-black-divisor w-full justify-between cursor-pointer">
                   <div className="relative leading-[2.4] tracking-tightest">

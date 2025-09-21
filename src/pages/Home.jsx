@@ -1,8 +1,8 @@
-import { Card } from '@/components/HomeComponents/Card/Card';
-import { Header } from '@/components/HomeComponents/header/Header';
-import Modal from '@/components/HomeComponents/Modal/Modal';
-import { Searchbar } from '@/components/HomeComponents/Searchbar/Searchbar';
-import { useState } from 'react';
+import { Card } from "@/components/HomeComponents/Card/Card";
+import { Header } from "@/components/HomeComponents/header/Header";
+import Modal from "@/components/HomeComponents/Modal/Modal";
+import { Searchbar } from "@/components/HomeComponents/Searchbar/Searchbar";
+import { useState } from "react";
 
 const Home = () => {
    const [openModal, setOpenModal] = useState(false);
@@ -26,14 +26,18 @@ const Home = () => {
             ))}
          </div>
          {openModal && (
-            <div
-               className="fixed inset-0 bg-black/30 cursor-pointer "
-               onClick={() => setOpenModal(false)}
-            >
+            <div className="fixed inset-0 flex">
                <div
                   className={`
-            flex ml-auto mr-0 bg-white w-2/5 h-full cursor-default py-10 px-5 gap-1.5
-            ${openModal ? 'animate-slide-in' : 'animate-slide-out'}
+            absolute inset-0 bg-black/30 cursor-pointer
+            ${openModal ? "animate-fade-in" : "animate-fade-out"}
+         `}
+                  onClick={() => setOpenModal(false)}
+               />
+               <div
+                  className={`
+            relative ml-auto bg-white w-2/5 h-full cursor-default py-10 px-5 gap-1.5
+            ${openModal && "animate-slide-in"}
          `}
                   onClick={(e) => e.stopPropagation()}
                >

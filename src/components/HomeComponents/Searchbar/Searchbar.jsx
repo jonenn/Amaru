@@ -27,22 +27,28 @@ const Searchbar = () => {
                <img src={Filter} alt="Filter button" width={24} />
                <p className="">Filtrar por</p>
             </button>
-            {filterOpen && (
-               <div className="absolute flex flex-col top-[3rem] right-0 left-0 bg-white px-4 py-3 shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm gap-3">
-                  <div className="flex border-b-1 border-black-divisor w-full justify-between cursor-pointer">
-                     <div className="relative leading-[2.4] tracking-tightest">
-                        Cliente
-                     </div>
-                     <img src={Arrow} alt="" />
+            <div
+               className={`absolute flex flex-col top-[3rem] right-0 left-0 bg-white px-4 py-3 shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm gap-3 transform transition-all duration-300 origin-top
+                  ${
+                     filterOpen
+                        ? "opacity-100 scale-100"
+                        : "opacity-0 scale-95 pointer-events-none"
+                  }
+               `}
+            >
+               <div className="flex border-b-1 border-black-divisor w-full justify-between cursor-pointer">
+                  <div className="relative leading-[2.4] tracking-tightest">
+                     Cliente
                   </div>
-                  <div className="flex border-b-1 border-black-divisor w-full justify-between cursor-pointer">
-                     <div className="relative leading-[2.4] tracking-tightest">
-                        Estado
-                     </div>
-                     <img src={Arrow} alt="" />
-                  </div>
+                  <img src={Arrow} alt="" />
                </div>
-            )}
+               <div className="flex border-b-1 border-black-divisor w-full justify-between cursor-pointer">
+                  <div className="relative leading-[2.4] tracking-tightest">
+                     Estado
+                  </div>
+                  <img src={Arrow} alt="" />
+               </div>
+            </div>
          </div>
       </div>
    );

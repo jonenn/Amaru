@@ -1,5 +1,6 @@
 import { Card } from '@/components/HomeComponents/Card/Card';
 import { Header } from '@/components/HomeComponents/header/Header';
+import Modal from '@/components/HomeComponents/Modal/Modal';
 import { Searchbar } from '@/components/HomeComponents/Searchbar/Searchbar';
 import { useState } from 'react';
 
@@ -26,17 +27,17 @@ const Home = () => {
          </div>
          {openModal && (
             <div
-               className="absolute inset-0 bg-black/30 cursor-pointer"
+               className="fixed inset-0 bg-black/30 cursor-pointer "
                onClick={() => setOpenModal(false)}
             >
                <div
                   className={`
-            flex ml-auto mr-0 bg-white w-2/5 h-full cursor-default
+            flex ml-auto mr-0 bg-white w-2/5 h-full cursor-default py-10 px-5 gap-1.5
             ${openModal ? 'animate-slide-in' : 'animate-slide-out'}
          `}
                   onClick={(e) => e.stopPropagation()}
                >
-                  Modal here!
+                  <Modal />
                </div>
             </div>
          )}

@@ -17,6 +17,14 @@ const Home = () => {
    console.log("this is modal", openModal);
 
    useEffect(() => {
+      if (openModal) {
+         document.body.classList.add("h-screen", "overflow-hidden");
+      } else {
+         document.body.classList.remove("h-screen", "overflow-hidden");
+      }
+   }, [openModal]);
+
+   useEffect(() => {
       const getAllDemands = async () => {
          try {
             const data = await getDemands("demands");

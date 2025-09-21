@@ -2,10 +2,11 @@ import { DemandBody } from "@/components/HomeComponents/DemandBody";
 import { ModalHeader } from "./ModalHeader";
 import { Tag } from "@/components/HomeComponents/Tag";
 import { setOpenModal } from "@/features/modal/modalSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Files from "./Files";
 import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
+import { useEffect } from "react";
 
 const Modal = ({
    content: { name, demandType, status, client, description, documents },

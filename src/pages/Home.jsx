@@ -3,7 +3,7 @@ import { Header } from "@/components/HomeComponents/header/Header";
 import Modal from "@/components/HomeComponents/Modal/Modal";
 import { Searchbar } from "@/components/HomeComponents/Searchbar/Searchbar";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import getDemands from "@/services/demands";
 import { setCardData } from "@/features/cards/cardsSlice";
 import { setOpenModal } from "@/features/modal/modalSlice";
@@ -37,11 +37,16 @@ const Home = () => {
          <Header />
          <Searchbar />
          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-3">
-            {[1, 2, 3, 4, 5, 6].map((num, index) => (
+            {cardData.map((demand) => (
                <Card
-                  key={num}
+                  key={demand.id}
+                  title={demand.name}
+                  type={demand.demandType}
+                  status={demand.status}
+                  customer={demand.client}
+                  description={demand.description}
                   onClick={() => {
-                     handleClick(index);
+                     handleClick(demand.id);
                   }}
                />
             ))}

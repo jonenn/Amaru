@@ -1,21 +1,21 @@
-import { Link } from 'react-router-dom';
-import { CardHeader } from './CardHeader';
-import { CardTags } from './CardTags';
-import { CardBody } from './CardBody';
+import { Link } from "react-router-dom";
+import { CardHeader } from "./CardHeader";
+import { CardTags } from "./CardTags";
+import { CardBody } from "./CardBody";
 
-const Card = ({ onClick }) => {
+const Card = ({ onClick, title, type, customer, description, status }) => {
    return (
       <Link
          to="#"
          className="flex flex-col bg-white shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] rounded-lg px-5.5 py-4 gap-2.5"
          onClick={onClick}
       >
-         <CardHeader title="Demanda #10235" />
-         <CardTags tags={['Cerrado', 'Contrato']} />
-         <CardBody
-            customer="IDRD"
-            description="En esta resolución se adopta el uso de guías ambientales para definir  los criterios y requisitos técnicos para la elaboración y presentación  de estudios de impacto ambiental. También establece los parámetros,  modalidades, normas y límites que deben seguirse para realizar una  evaluación ambiental completa de cualquier proyecto."
-         />
+         <CardHeader title={title} />
+         <div className="flex flex-wrap gap-2.5">
+            <CardTags label={type} />
+            <CardTags label={status} />
+         </div>
+         <CardBody customer={customer} description={description} />
       </Link>
    );
 };

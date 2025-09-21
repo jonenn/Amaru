@@ -1,6 +1,6 @@
-import MainProfile from '@/components/HomeComponents/header/MainProfile';
-import MainTitle from '@/components/HomeComponents/header/MainTitle';
-import ProfilePic from '@/components/HomeComponents/header/ProfilePic';
+import MainProfile from "@/components/HomeComponents/header/MainProfile";
+import MainTitle from "@/components/HomeComponents/header/MainTitle";
+import ProfilePic from "@/components/HomeComponents/header/ProfilePic";
 
 const Header = () => {
    return (

@@ -1,6 +1,6 @@
 const CardTags = ({ tags }) => {
    return (
-      <div className="flex gap-2.5">
+      <div className="flex flex-wrap gap-2.5">
          {tags.map((tag, i) => (
             <span
                key={i}

@@ -30,7 +30,10 @@ const Home = () => {
                onClick={() => setOpenModal(false)}
             >
                <div
-                  className="flex ml-auto mr-0 bg-white w-2/5 h-full cursor-default"
+                  className={`
+            flex ml-auto mr-0 bg-white w-2/5 h-full cursor-default
+            ${openModal ? 'animate-slide-in' : 'animate-slide-out'}
+         `}
                   onClick={(e) => e.stopPropagation()}
                >
                   Modal here!

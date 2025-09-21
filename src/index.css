@@ -15,6 +15,17 @@
    --color-gray-secondary: #c8c8c8;
    --color-gray-tertiary: #757575;
    --tracking-tightest: -0.011em;
+
+   --animate-slide-in: slideIn 0.1s ease-out forwards;
+}
+
+@keyframes slideIn {
+   from {
+      transform: translateX(100%);
+   }
+   to {
+      transform: translateX(0%);
+   }
 }
 
 body {

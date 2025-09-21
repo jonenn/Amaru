@@ -3,12 +3,13 @@ import { Header } from "@/components/HomeComponents/header/Header";
 import Modal from "@/components/HomeComponents/Modal/Modal";
 import { Searchbar } from "@/components/HomeComponents/Searchbar/Searchbar";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import getDemands from "@/services/demands";
 import { setCardData } from "@/features/cards/cardsSlice";
 import { setOpenModal } from "@/features/modal/modalSlice";
 
 const Home = () => {
+   const [modalContent, setModalContent] = useState({});
    const openModal = useSelector((state) => state.modal.open);
    const cardData = useSelector((state) => state.cards.items);
    const dispatch = useDispatch();
@@ -30,6 +31,10 @@ const Home = () => {
 
    const handleClick = (id) => {
       dispatch(setOpenModal());
+      console.log(id);
+      const content = cardData.find((item) => item.id === id);
+      console.log(content);
+      setModalContent(content);
    };
 
    return (
@@ -37,21 +42,17 @@ const Home = () => {
          <Header />
          <Searchbar />
          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-3">
-            {cardData.map((demand) => (
+            {cardData?.map((demand) => (
                <Card
                   key={demand.id}
-                  title={demand.name}
-                  type={demand.demandType}
-                  status={demand.status}
-                  customer={demand.client}
-                  description={demand.description}
+                  content={demand}
                   onClick={() => {
                      handleClick(demand.id);
                   }}
                />
             ))}
          </div>
-         {openModal && (
+         {openModal && modalContent && (
             <div className="fixed inset-0 flex">
                <div
                   className={`
@@ -67,7 +68,7 @@ const Home = () => {
          `}
                   onClick={(e) => e.stopPropagation()}
                >
-                  <Modal />
+                  <Modal content={modalContent} />
                </div>
             </div>
          )}

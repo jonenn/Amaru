@@ -1,4 +1,4 @@
-const ModalBody = ({ customer, description }) => {
+const DemandBody = ({ customer, description }) => {
    return (
       <div className="flex flex-col text-sm gap-2.5">
          <div>
@@ -10,4 +10,4 @@ const ModalBody = ({ customer, description }) => {
    );
 };
 
-export { ModalBody };
+export { DemandBody };

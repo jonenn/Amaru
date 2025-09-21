@@ -1,8 +1,11 @@
-import Close from '@/assets/close.svg';
+import Close from "@/assets/close.svg";
+import { setOpenModal } from "@/features/modal/modalSlice";
+import { useDispatch } from "react-redux";
 
 const ModalHeader = ({ title }) => {
+   const dispatch = useDispatch();
    const closeModal = () => {
-      console.log('Close modal');
+      dispatch(setOpenModal());
    };
 
    return (

@@ -3,12 +3,30 @@ import { Header } from "@/components/HomeComponents/header/Header";
 import Modal from "@/components/HomeComponents/Modal/Modal";
 import { Searchbar } from "@/components/HomeComponents/Searchbar/Searchbar";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import getDemands from "@/services/demands";
+import { setCardData } from "@/features/cards/cardsSlice";
 import { setOpenModal } from "@/features/modal/modalSlice";
 
 const Home = () => {
-   const openModal = useSelector((state) => state.modal.value);
+   const openModal = useSelector((state) => state.modal.open);
+   const cardData = useSelector((state) => state.cards.items);
    const dispatch = useDispatch();
-   console.log(openModal);
+   console.log("this is rtk", cardData);
+   console.log("this is modal", openModal);
+
+   useEffect(() => {
+      const getAllDemands = async () => {
+         try {
+            const data = await getDemands("demands");
+            dispatch(setCardData(data));
+         } catch (error) {
+            console.error(err);
+         }
+      };
+
+      getAllDemands();
+   }, []);
 
    const handleClick = (id) => {
       dispatch(setOpenModal());

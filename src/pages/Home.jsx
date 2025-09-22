@@ -7,11 +7,16 @@ import { useEffect, useMemo, useState } from "react";
 import getDemands from "@/services/demands";
 import { setCardData } from "@/features/cards/cardsSlice";
 import { setOpenModal } from "@/features/modal/modalSlice";
+import {
+   clearFilters,
+   toggleFilter,
+} from "@/features/filtering/filteringSlice";
 
 const Home = () => {
    const openModal = useSelector((state) => state.modal.open);
    const cardData = useSelector((state) => state.cards.items);
    const searchTerm = useSelector((state) => state.searching.value);
+   const filters = useSelector((state) => state.filtering);
    const [modalContent, setModalContent] = useState({});
    const dispatch = useDispatch();
    console.log("this is rtk", cardData);
@@ -56,10 +61,41 @@ const Home = () => {
       );
    }, [cardData, searchTerm]);
 
+   const activeFilters = Object.entries(filters).flatMap(([key, values]) =>
+      values.map((value) => {
+         console.log(value);
+         return { key, value };
+      })
+   );
+
    return (
       <main className="flex flex-col gap-1.5 my-11 mx-7">
          <Header />
          <Searchbar />
+         {activeFilters.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2 mb-4 justify-between my-2 ml-4">
+               <button
+                  onClick={() => dispatch(clearFilters())}
+                  className="text-red-filter font-normal cursor-pointer"
+               >
+                  Limpiar filtros
+               </button>
+               {activeFilters.map(({ key, value }) => (
+                  <span
+                     key={`${key}-${value}`}
+                     className="flex items-center bg-green-filter text-white py-2 pl-4 pr-4 rounded-4xl tracking-tightest leading-4 font-normal gap-2 capitalize cursor-pointer"
+                     onClick={() =>
+                        dispatch(toggleFilter({ key, filter: { name: value } }))
+                     }
+                  >
+                     {value}
+                     <span className="ml-1 text-white hover:text-gray-200">
+                        ×
+                     </span>
+                  </span>
+               ))}
+            </div>
+         )}
          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-3">
             {filteredCards?.map((demand) => (
                <Card

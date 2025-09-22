@@ -7,7 +7,6 @@ import SearchInput from "./SearchInput";
 import FilterButton from "./FilterButton";
 import { useDispatch, useSelector } from "react-redux";
 import { setCardData } from "@/features/cards/cardsSlice";
-import { clearFilters } from "@/features/filtering/filteringSlice";
 
 const Searchbar = () => {
    const [filterOpen, setFilterOpen] = useState(false);

@@ -80,20 +80,24 @@ const Home = () => {
                >
                   Limpiar filtros
                </button>
-               {activeFilters.map(({ key, value }) => (
-                  <span
-                     key={`${key}-${value}`}
-                     className="flex items-center bg-green-filter text-white py-2 pl-4 pr-4 rounded-4xl tracking-tightest leading-4 font-normal gap-2 capitalize cursor-pointer"
-                     onClick={() =>
-                        dispatch(toggleFilter({ key, filter: { name: value } }))
-                     }
-                  >
-                     {value}
-                     <span className="ml-1 text-white hover:text-gray-200">
-                        ×
+               <div className="flex gap-2 flex-wrap">
+                  {activeFilters.map(({ key, value }) => (
+                     <span
+                        key={`${key}-${value}`}
+                        className="flex items-center bg-green-filter text-white py-2 pl-4 pr-4 rounded-4xl tracking-tightest leading-4 font-normal gap-2 capitalize cursor-pointer max-h-min"
+                        onClick={() =>
+                           dispatch(
+                              toggleFilter({ key, filter: { name: value } })
+                           )
+                        }
+                     >
+                        {value}
+                        <span className="ml-1 text-white hover:text-gray-200">
+                           ×
+                        </span>
                      </span>
-                  </span>
-               ))}
+                  ))}
+               </div>
             </div>
          )}
          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-3">

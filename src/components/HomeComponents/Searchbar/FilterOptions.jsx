@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFilter } from "@/features/filtering/filteringSlice";
 import Check from "@/assets/check.svg";
 
 const CustomCheckbox = ({ checked }) => {
@@ -17,36 +18,28 @@ const CustomCheckbox = ({ checked }) => {
    );
 };
 
-const FilterOptions = ({ onChange, filtersData = [] }) => {
-   const [selectedIds, setSelectedIds] = useState([]);
+const FilterOptions = ({ filtersData = [], filterKey }) => {
+   const dispatch = useDispatch();
+   const selected = useSelector((state) => state.filtering?.[filterKey] || []);
 
-   const toggleFilter = (filter) => {
-      let newSelected;
-      if (selectedIds.includes(filter.id)) {
-         newSelected = selectedIds.filter((id) => id !== filter.id);
-      } else {
-         newSelected = [...selectedIds, filter.id];
-      }
-      setSelectedIds(newSelected);
-      const selectedFilters = filtersData.filter((f) =>
-         newSelected.includes(f.id)
-      );
-      onChange?.(selectedFilters);
+   const toggle = (filter) => {
+      if (!filterKey) return;
+      dispatch(toggleFilter({ key: filterKey, filter }));
    };
 
    return (
       <div className="flex flex-col gap-2">
          {filtersData.map((filter) => {
-            const checked = selectedIds.includes(filter.id);
+            const checked = selected.includes(filter.name);
             return (
                <label
-                  key={filter.id}
-                  className="flex items-center cursor-pointer select-none"
+                  key={filter.id || filter.name}
+                  className="flex items-center cursor-pointer select-none gap-2"
                >
                   <input
                      type="checkbox"
                      checked={checked}
-                     onChange={() => toggleFilter(filter)}
+                     onChange={() => toggle(filter)}
                      className="sr-only"
                   />
                   <CustomCheckbox checked={checked} />

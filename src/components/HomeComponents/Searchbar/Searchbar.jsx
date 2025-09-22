@@ -5,15 +5,16 @@ import FilterOptions from "./FilterOptions";
 import getDemands from "@/services/demands";
 import SearchInput from "./SearchInput";
 import FilterButton from "./FilterButton";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCardData } from "@/features/cards/cardsSlice";
+import { clearFilters } from "@/features/filtering/filteringSlice";
 
 const Searchbar = () => {
    const [filterOpen, setFilterOpen] = useState(false);
    const [demands, setDemands] = useState([]);
    const [openAccordion, setOpenAccordion] = useState(null);
-   const [selectedFilters, setSelectedFilters] = useState({});
    const dispatch = useDispatch();
+   const selectedFilters = useSelector((state) => state.filtering);
 
    useEffect(() => {
       const getAllDemands = async () => {
@@ -38,27 +39,17 @@ const Searchbar = () => {
       getAllDemands();
    }, []);
 
-   const handleFilterChange = (key, filters) => {
-      setSelectedFilters((prev) => ({
-         ...prev,
-         [key]: filters.map((f) => f.name),
-      }));
-   };
-
    const applyFilters = async () => {
       const params = new URLSearchParams();
-      console.log(params);
 
       Object.entries(selectedFilters).forEach(([key, values]) => {
          if (Array.isArray(values)) {
             values.forEach((v) => params.append(key, v));
-         } else if (values) {
-            params.append(key, values);
          }
       });
 
       const query = params.toString();
-      console.log(query);
+      console.log("Applied filters:", query);
 
       const res = await getDemands(`/demands?${query}`);
       dispatch(setCardData(res));
@@ -73,12 +64,12 @@ const Searchbar = () => {
             <FilterButton onClick={() => setFilterOpen(!filterOpen)} />
             <div
                className={`absolute flex flex-col top-[3rem] right-0 left-0 bg-white px-2 py-3 shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm transform transition-all duration-300 origin-top rounded-lg gap-3 max-h-[80vh]
-      ${
-         filterOpen
-            ? "opacity-100 scale-100"
-            : "opacity-0 scale-95 pointer-events-none"
-      }
-   `}
+            ${
+               filterOpen
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-95 pointer-events-none"
+            }
+          `}
             >
                {demands?.map((item) => (
                   <Accordion
@@ -93,14 +84,12 @@ const Searchbar = () => {
                   >
                      <FilterOptions
                         filtersData={item.options}
-                        onChange={(filter) =>
-                           handleFilterChange(item.key, filter)
-                        }
+                        filterKey={item.key}
                      />
                   </Accordion>
                ))}
 
-               <div className="bg-white sticky bottom-0">
+               <div className="bg-white sticky bottom-0 flex gap-2">
                   <PrimaryButton
                      className="w-full rounded-md"
                      onClick={applyFilters}

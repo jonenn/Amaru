@@ -38,17 +38,29 @@ const Searchbar = () => {
       getAllDemands();
    }, []);
 
-   const handleFilterChange = (key, filter) => {
+   const handleFilterChange = (key, filters) => {
       setSelectedFilters((prev) => ({
          ...prev,
-         [key]: filter.name,
+         [key]: filters.map((f) => f.name),
       }));
    };
 
    const applyFilters = async () => {
-      const query = new URLSearchParams(selectedFilters).toString();
+      const params = new URLSearchParams();
+      console.log(params);
+
+      Object.entries(selectedFilters).forEach(([key, values]) => {
+         if (Array.isArray(values)) {
+            values.forEach((v) => params.append(key, v));
+         } else if (values) {
+            params.append(key, values);
+         }
+      });
+
+      const query = params.toString();
+      console.log(query);
+
       const res = await getDemands(`/demands?${query}`);
-      console.log("Filtered results:", res);
       dispatch(setCardData(res));
    };
 

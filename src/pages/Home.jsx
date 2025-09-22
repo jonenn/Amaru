@@ -11,8 +11,8 @@ import { setOpenModal } from "@/features/modal/modalSlice";
 const Home = () => {
    const openModal = useSelector((state) => state.modal.open);
    const cardData = useSelector((state) => state.cards.items);
+   const searchTerm = useSelector((state) => state.searching.value);
    const [modalContent, setModalContent] = useState({});
-   const [searchTerm, setSearchTerm] = useState("");
    const dispatch = useDispatch();
    console.log("this is rtk", cardData);
    console.log("this is modal", openModal);
@@ -59,7 +59,7 @@ const Home = () => {
    return (
       <main className="flex flex-col gap-1.5 my-11 mx-7">
          <Header />
-         <Searchbar onSearch={setSearchTerm} />
+         <Searchbar />
          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-3">
             {filteredCards?.map((demand) => (
                <Card

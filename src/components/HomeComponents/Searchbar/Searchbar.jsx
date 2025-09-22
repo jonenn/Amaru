@@ -7,7 +7,7 @@ import getDemands from "@/services/demands";
 import SearchInput from "./SearchInput";
 import FilterButton from "./FilterButton";
 
-const Searchbar = ({ onSearch }) => {
+const Searchbar = () => {
    const [filterOpen, setFilterOpen] = useState(false);
    const [demands, setDemands] = useState([]);
    const [openAccordion, setOpenAccordion] = useState(null);
@@ -43,7 +43,7 @@ const Searchbar = ({ onSearch }) => {
 
    return (
       <div className="flex gap-4 my-4 w-full">
-         <SearchInput onSearch={onSearch} />
+         <SearchInput />
          <div className="flex relative w-1/4">
             <FilterButton onClick={() => setFilterOpen(!filterOpen)} />
             <div

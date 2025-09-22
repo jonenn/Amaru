@@ -1,13 +1,17 @@
+import { setSearchTerm } from "@/features/searching/searchingSlice";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const SearchInput = ({ onSearch }) => {
+   const dispatch = useDispatch();
+   const searchTerm = useSelector((state) => state.searching.value);
    const [query, setQuery] = useState("");
 
    const handleChange = (e) => {
       const value = e.target.value;
       console.log(value);
       setQuery(value);
-      onSearch(value);
+      dispatch(setSearchTerm(e.target.value));
    };
 
    return (

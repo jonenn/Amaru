@@ -6,7 +6,7 @@ const Header = () => {
    return (
       <div className="flex justify-between items-center">
          <MainTitle title="Demandas Activas" />
-         <div className="flex gap-2 mx-1">
+         <div className="hidden md:flex gap-2 mx-1">
             <MainProfile name="Jonenn Dev" role="Administrador" />
             <ProfilePic image="" />
          </div>

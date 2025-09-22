@@ -69,7 +69,7 @@ const Home = () => {
    );
 
    return (
-      <main className="flex flex-col gap-1.5 my-11 mx-7">
+      <main className="flex flex-col gap-1.5 md:my-11 md:mx-7">
          <Header />
          <Searchbar />
          {activeFilters.length > 0 && (

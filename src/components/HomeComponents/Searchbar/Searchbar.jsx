@@ -57,9 +57,9 @@ const Searchbar = () => {
    const hasFilters = Object.values(selectedFilters).flat().length > 0;
 
    return (
-      <div className="flex gap-4 my-4 w-full">
+      <div className="flex gap-4 m-4 md:mx-0 my-4">
          <SearchInput />
-         <div className="flex relative w-1/4">
+         <div className="flex relative md:w-1/4">
             <FilterButton onClick={() => setFilterOpen(!filterOpen)} />
             <div
                className={`absolute flex flex-col top-[3rem] right-0 left-0 bg-white px-2 py-3 shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm transform transition-all duration-300 origin-top rounded-lg gap-3 max-h-[80vh]

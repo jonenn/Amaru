@@ -100,7 +100,7 @@ const Home = () => {
                </div>
             </div>
          )}
-         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-3">
+         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-3 mx-2.5 md:mx-0">
             {filteredCards?.map((demand) => (
                <Card
                   key={demand.id}

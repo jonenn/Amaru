@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
    client: [],
@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const filtersSlice = createSlice({
-   name: "filtering",
+   name: 'filtering',
    initialState,
    reducers: {
       toggleFilter(state, action) {
@@ -18,6 +18,9 @@ const filtersSlice = createSlice({
             state[key].push(filter.name);
          }
       },
+      setFilters(state, action) {
+         return action.payload;
+      },
       clearFilters(state) {
          state.client = [];
          state.status = [];
@@ -26,5 +29,5 @@ const filtersSlice = createSlice({
    },
 });
 
-export const { toggleFilter, clearFilters } = filtersSlice.actions;
+export const { toggleFilter, setFilters, clearFilters } = filtersSlice.actions;
 export default filtersSlice.reducer;

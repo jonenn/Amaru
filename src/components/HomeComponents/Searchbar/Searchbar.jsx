@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
-import PrimaryButton from "@/components/PrimaryButton";
-import Accordion from "./Accordion";
-import FilterOptions from "./FilterOptions";
-import getDemands from "@/services/demands";
-import SearchInput from "./SearchInput";
-import FilterButton from "./FilterButton";
-import { useDispatch, useSelector } from "react-redux";
-import { setCardData } from "@/features/cards/cardsSlice";
+import { useEffect, useState } from 'react';
+import PrimaryButton from '@/components/PrimaryButton';
+import Accordion from './Accordion';
+import FilterOptions from './FilterOptions';
+import getDemands from '@/services/demands';
+import SearchInput from './SearchInput';
+import FilterButton from './FilterButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCardData } from '@/features/cards/cardsSlice';
+import { setFilters, toggleFilter } from '@/features/filtering/filteringSlice';
 
 const Searchbar = () => {
    const [filterOpen, setFilterOpen] = useState(false);
@@ -14,20 +15,22 @@ const Searchbar = () => {
    const [openAccordion, setOpenAccordion] = useState(null);
    const dispatch = useDispatch();
    const selectedFilters = useSelector((state) => state.filtering);
+   const [localSelected, setLocalSelected] = useState(selectedFilters);
+   console.log('locally selected', localSelected);
 
    useEffect(() => {
       const getAllDemands = async () => {
          try {
             const [typesRes, statusesRes, clientsRes] = await Promise.all([
-               getDemands("/available_demand_types"),
-               getDemands("/available_statuses"),
-               getDemands("/available_clients"),
+               getDemands('/available_demand_types'),
+               getDemands('/available_statuses'),
+               getDemands('/available_clients'),
             ]);
 
             const demandsFilters = [
-               { title: "Cliente", key: "client", options: clientsRes },
-               { title: "Estado", key: "status", options: statusesRes },
-               { title: "Tipo", key: "demandType", options: typesRes },
+               { title: 'Cliente', key: 'client', options: clientsRes },
+               { title: 'Estado', key: 'status', options: statusesRes },
+               { title: 'Tipo', key: 'demandType', options: typesRes },
             ];
             setDemands(demandsFilters);
          } catch (err) {
@@ -38,30 +41,35 @@ const Searchbar = () => {
       getAllDemands();
    }, []);
 
+   const handleOpenFilters = () => {
+      setLocalSelected(selectedFilters);
+      setFilterOpen(!filterOpen);
+   };
+
    const applyFilters = async () => {
       setFilterOpen(false);
-      const params = new URLSearchParams();
 
-      Object.entries(selectedFilters).forEach(([key, values]) => {
-         if (Array.isArray(values)) {
-            values.forEach((v) => params.append(key, v));
-         }
+      dispatch(setFilters(localSelected));
+
+      const params = new URLSearchParams();
+      Object.entries(localSelected).forEach(([key, values]) => {
+         values.forEach((v) => params.append(key, v));
       });
 
       const query = params.toString();
-      console.log("Applied filters:", query);
+      console.log('Applied filters:', query);
 
       const res = await getDemands(`/demands?${query}`);
       dispatch(setCardData(res));
    };
 
-   const hasFilters = Object.values(selectedFilters).flat().length > 0;
+   const hasFilters = Object.values(localSelected).flat().length > 0;
 
    return (
       <div className="flex gap-4 m-4 md:mx-0 my-4">
          <SearchInput />
          <div className="flex relative md:w-1/4">
-            <FilterButton onClick={() => setFilterOpen(!filterOpen)} />
+            <FilterButton onClick={handleOpenFilters} />
             {filterOpen && (
                <div
                   className="fixed inset-0 bg-black/30 md:hidden z-40"
@@ -71,17 +79,17 @@ const Searchbar = () => {
 
             <div
                className={`
-            fixed md:absolute flex flex-col bottom-0 md:bottom-auto md:top-[3rem] right-0 left-0 bg-white px-2 py-3
-            shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm transform transition-all duration-300 origin-top md:rounded-lg gap-3 max-h-[80vh] z-50
+            fixed md:absolute flex flex-col bottom-0 md:bottom-auto md:top-[3rem] right-0 left-0 overflow-y-auto bg-white px-2 py-3
+            shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm transform transition-all duration-300 origin-top md:rounded-lg gap-3 max-h-[70vh] z-50
             ${
                filterOpen
-                  ? "opacity-100 translate-y-0 scale-100"
-                  : "opacity-0 translate-y-full scale-95 pointer-events-none"
+                  ? 'opacity-100 translate-y-0 scale-100'
+                  : 'opacity-0 top-[200vh] scale-95 pointer-events-none'
             }
             md:${
                filterOpen
-                  ? "opacity-100 scale-100 translate-y-0"
-                  : "opacity-0 scale-95 pointer-events-none"
+                  ? 'opacity-100 scale-100 translate-y-0'
+                  : 'opacity-0 scale-95 pointer-events-none'
             }
           `}
                onClick={(e) => e.stopPropagation()}
@@ -100,6 +108,8 @@ const Searchbar = () => {
                      <FilterOptions
                         filtersData={item.options}
                         filterKey={item.key}
+                        setLocalSelected={setLocalSelected}
+                        localSelected={localSelected}
                      />
                   </Accordion>
                ))}
@@ -107,7 +117,7 @@ const Searchbar = () => {
                <div className="bg-white sticky bottom-0 flex gap-2">
                   <PrimaryButton
                      className="w-full rounded-md"
-                     onClick={applyFilters}
+                     onClick={() => applyFilters(localSelected)}
                      disabled={!hasFilters}
                   >
                      Aplicar Filtros

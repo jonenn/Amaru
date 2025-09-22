@@ -1,16 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
-import { toggleFilter } from "@/features/filtering/filteringSlice";
-import Check from "@/assets/check.svg";
+import { useSelector } from 'react-redux';
+import Check from '@/assets/check.svg';
 
 const CustomCheckbox = ({ checked }) => {
    return (
       <span
          className={`flex justify-center items-center min-w-[30px] min-h-[30px] rounded-3xl cursor-pointer
-        ${checked ? "" : "hover:bg-green-hover"}`}
+        ${checked ? '' : 'hover:bg-green-hover'}`}
       >
          <span
             className={`flex justify-center items-center w-[17px] h-[17px] border border-green-title rounded-md transition-colors
-            ${checked ? "bg-green-title" : "bg-transparent"}`}
+            ${checked ? 'bg-green-title' : 'bg-transparent'}`}
          >
             {checked && <img src={Check} alt="Checked" className="w-3 h-3" />}
          </span>
@@ -18,13 +17,25 @@ const CustomCheckbox = ({ checked }) => {
    );
 };
 
-const FilterOptions = ({ filtersData = [], filterKey }) => {
-   const dispatch = useDispatch();
-   const selected = useSelector((state) => state.filtering?.[filterKey] || []);
+const FilterOptions = ({
+   filtersData = [],
+   filterKey,
+   localSelected,
+   setLocalSelected,
+}) => {
+   const selected = localSelected?.[filterKey] || [];
 
    const toggle = (filter) => {
-      if (!filterKey) return;
-      dispatch(toggleFilter({ key: filterKey, filter }));
+      setLocalSelected((prev) => {
+         const current = prev[filterKey] || [];
+         const exists = current.includes(filter.name);
+         return {
+            ...prev,
+            [filterKey]: exists
+               ? current.filter((f) => f !== filter.name)
+               : [...current, filter.name],
+         };
+      });
    };
 
    return (

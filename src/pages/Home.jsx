@@ -1,16 +1,16 @@
-import { Card } from "@/components/HomeComponents/Card/Card";
-import { Header } from "@/components/HomeComponents/header/Header";
-import Modal from "@/components/HomeComponents/Modal/Modal";
-import { Searchbar } from "@/components/HomeComponents/Searchbar/Searchbar";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useMemo, useState } from "react";
-import getDemands from "@/services/demands";
-import { setCardData } from "@/features/cards/cardsSlice";
-import { setOpenModal } from "@/features/modal/modalSlice";
+import { Card } from '@/components/HomeComponents/Card/Card';
+import { Header } from '@/components/HomeComponents/header/Header';
+import Modal from '@/components/HomeComponents/Modal/Modal';
+import { Searchbar } from '@/components/HomeComponents/Searchbar/Searchbar';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useMemo, useState } from 'react';
+import getDemands from '@/services/demands';
+import { setCardData } from '@/features/cards/cardsSlice';
+import { setOpenModal } from '@/features/modal/modalSlice';
 import {
    clearFilters,
    toggleFilter,
-} from "@/features/filtering/filteringSlice";
+} from '@/features/filtering/filteringSlice';
 
 const Home = () => {
    const openModal = useSelector((state) => state.modal.open);
@@ -19,21 +19,22 @@ const Home = () => {
    const filters = useSelector((state) => state.filtering);
    const [modalContent, setModalContent] = useState({});
    const dispatch = useDispatch();
-   console.log("this is rtk", cardData);
-   console.log("this is modal", openModal);
+   console.log('this is rtk', cardData);
+   console.log('this is modal', openModal);
+   console.log('this is modal', filters);
 
    useEffect(() => {
       if (openModal) {
-         document.body.classList.add("h-screen", "overflow-hidden");
+         document.body.classList.add('h-screen', 'overflow-hidden');
       } else {
-         document.body.classList.remove("h-screen", "overflow-hidden");
+         document.body.classList.remove('h-screen', 'overflow-hidden');
       }
    }, [openModal]);
 
    useEffect(() => {
       const getAllDemands = async () => {
          try {
-            const data = await getDemands("demands");
+            const data = await getDemands('demands');
             dispatch(setCardData(data));
          } catch (error) {
             console.error(err);

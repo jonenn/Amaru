@@ -64,6 +64,8 @@ const Searchbar = () => {
       dispatch(setCardData(res));
    };
 
+   const hasFilters = Object.values(selectedFilters).flat().length > 0;
+
    return (
       <div className="flex gap-4 my-4 w-full">
          <SearchInput />
@@ -102,6 +104,7 @@ const Searchbar = () => {
                   <PrimaryButton
                      className="w-full rounded-md"
                      onClick={applyFilters}
+                     disabled={!hasFilters}
                   >
                      Aplicar Filtros
                   </PrimaryButton>

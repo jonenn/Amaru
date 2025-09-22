@@ -19,6 +19,7 @@
    --color-gray-main: #818181;
    --color-gray-secondary: #c8c8c8;
    --color-gray-tertiary: #757575;
+   --color-gray-disabled: #999999;
    --tracking-tightest: -0.011em;
 
    --animate-slide-in: slideIn 0.1s ease-out forwards;

@@ -39,6 +39,7 @@ const Searchbar = () => {
    }, []);
 
    const applyFilters = async () => {
+      setFilterOpen(false);
       const params = new URLSearchParams();
 
       Object.entries(selectedFilters).forEach(([key, values]) => {
@@ -56,26 +57,37 @@ const Searchbar = () => {
 
    const hasFilters = Object.values(selectedFilters).flat().length > 0;
 
+   // handle closing when clicking overlay
+   const handleOverlayClick = () => setFilterOpen(false);
+
    return (
       <div className="flex gap-4 m-4 md:mx-0 my-4">
          <SearchInput />
          <div className="flex relative md:w-1/4">
             <FilterButton onClick={() => setFilterOpen(!filterOpen)} />
+            {filterOpen && (
+               <div
+                  className="fixed inset-0 bg-black/30 md:hidden z-40"
+                  onClick={handleOverlayClick}
+               />
+            )}
+
             <div
                className={`
-    fixed md:absolute flex flex-col bottom-0 md:bottom-auto md:top-[3rem] right-0 left-0 bg-white px-2 py-3 
-    shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm transform transition-all duration-300 origin-top rounded-lg gap-3 max-h-[80vh]
-    ${
-       filterOpen
-          ? "opacity-100 translate-y-0 scale-100"
-          : "opacity-0 translate-y-full scale-95 pointer-events-none"
-    }
-    md:${
-       filterOpen
-          ? "opacity-100 scale-100 translate-y-0"
-          : "opacity-0 scale-95 pointer-events-none"
-    }
-  `}
+            fixed md:absolute flex flex-col bottom-0 md:bottom-auto md:top-[3rem] right-0 left-0 bg-white px-2 py-3
+            shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm transform transition-all duration-300 origin-top md:rounded-lg gap-3 max-h-[80vh] z-50
+            ${
+               filterOpen
+                  ? "opacity-100 translate-y-0 scale-100"
+                  : "opacity-0 translate-y-full scale-95 pointer-events-none"
+            }
+            md:${
+               filterOpen
+                  ? "opacity-100 scale-100 translate-y-0"
+                  : "opacity-0 scale-95 pointer-events-none"
+            }
+          `}
+               onClick={(e) => e.stopPropagation()}
             >
                {demands?.map((item) => (
                   <Accordion

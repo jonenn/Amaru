@@ -57,9 +57,6 @@ const Searchbar = () => {
 
    const hasFilters = Object.values(selectedFilters).flat().length > 0;
 
-   // handle closing when clicking overlay
-   const handleOverlayClick = () => setFilterOpen(false);
-
    return (
       <div className="flex gap-4 m-4 md:mx-0 my-4">
          <SearchInput />
@@ -68,7 +65,7 @@ const Searchbar = () => {
             {filterOpen && (
                <div
                   className="fixed inset-0 bg-black/30 md:hidden z-40"
-                  onClick={handleOverlayClick}
+                  onClick={() => setFilterOpen(false)}
                />
             )}
 

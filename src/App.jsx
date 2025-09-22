@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/home";
 import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home";
 
 function App() {
    return (

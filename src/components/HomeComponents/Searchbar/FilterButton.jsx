@@ -11,7 +11,7 @@ const FilterButton = ({ onClick }) => {
             alt="Filter button"
             className="min-h-[24px] min-w-[24px]"
          />
-         <p className="hidden md:flex invisible">Filtrar por</p>
+         <p className="hidden md:flex">Filtrar por</p>
       </button>
    );
 };

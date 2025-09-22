@@ -10,7 +10,7 @@ const ModalHeader = ({ title }) => {
 
    return (
       <div className="flex justify-between">
-         <h3 className="text-green-title font-bold text-xl leading-[2.4]">
+         <h3 className="text-green-title font-bold text-xl md:leading-[2.4]">
             {title}
          </h3>
          <div className="cursor-pointer" onClick={closeModal}>

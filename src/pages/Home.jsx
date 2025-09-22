@@ -114,17 +114,14 @@ const Home = () => {
          {openModal && modalContent && (
             <div className="fixed inset-0 flex">
                <div
-                  className={`
-            absolute inset-0 bg-black/30 cursor-pointer
-            ${openModal ? "animate-fade-in" : "animate-fade-out"}
-         `}
+                  className="absolute inset-0 bg-black/30 cursor-pointer animate-fade-in"
                   onClick={handleClick}
                />
                <div
                   className={`
-            relative ml-auto bg-white w-2/5 h-full cursor-default py-10 px-5 gap-1.5
-            ${openModal && "animate-slide-in"}
-         `}
+    relative ml-auto bg-white w-full md:w-2/5 h-full cursor-default py-10 px-5 gap-1.5
+    animate-slide-in-mobile md:animate-slide-in
+  `}
                   onClick={(e) => e.stopPropagation()}
                >
                   <Modal content={modalContent} />

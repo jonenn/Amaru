@@ -1,7 +1,20 @@
-const SearchInput = () => {
+import { useState } from "react";
+
+const SearchInput = ({ onSearch }) => {
+   const [query, setQuery] = useState("");
+
+   const handleChange = (e) => {
+      const value = e.target.value;
+      console.log(value);
+      setQuery(value);
+      onSearch(value);
+   };
+
    return (
       <input
          type="search"
+         value={query}
+         onChange={handleChange}
          id="searchbar"
          name="searchbar"
          placeholder="Buscar"

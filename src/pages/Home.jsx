@@ -3,15 +3,16 @@ import { Header } from "@/components/HomeComponents/header/Header";
 import Modal from "@/components/HomeComponents/Modal/Modal";
 import { Searchbar } from "@/components/HomeComponents/Searchbar/Searchbar";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import getDemands from "@/services/demands";
 import { setCardData } from "@/features/cards/cardsSlice";
 import { setOpenModal } from "@/features/modal/modalSlice";
 
 const Home = () => {
-   const [modalContent, setModalContent] = useState({});
    const openModal = useSelector((state) => state.modal.open);
    const cardData = useSelector((state) => state.cards.items);
+   const [modalContent, setModalContent] = useState({});
+   const [searchTerm, setSearchTerm] = useState("");
    const dispatch = useDispatch();
    console.log("this is rtk", cardData);
    console.log("this is modal", openModal);
@@ -45,12 +46,22 @@ const Home = () => {
       setModalContent(content);
    };
 
+   const filteredCards = useMemo(() => {
+      if (!searchTerm) return cardData;
+
+      return cardData.filter((card) =>
+         Object.values(card).some((value) =>
+            String(value).toLowerCase().includes(searchTerm.toLowerCase())
+         )
+      );
+   }, [cardData, searchTerm]);
+
    return (
       <main className="flex flex-col gap-1.5 my-11 mx-7">
          <Header />
-         <Searchbar />
+         <Searchbar onSearch={setSearchTerm} />
          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-3">
-            {cardData?.map((demand) => (
+            {filteredCards?.map((demand) => (
                <Card
                   key={demand.id}
                   content={demand}

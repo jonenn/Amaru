@@ -109,6 +109,7 @@ const Home = () => {
                   onClick={() => {
                      handleClick(demand.id);
                   }}
+                  className="animate-fade-in-up"
                />
             ))}
          </div>

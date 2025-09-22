@@ -1,21 +1,39 @@
 import Filter from "@/assets/filter.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PrimaryButton from "@/components/PrimaryButton";
 import Accordion from "./Accordion";
 import FilterOptions from "./FilterOptions";
-
-const stateFilters = [
-   { id: "cumplido", label: "Cumplido" },
-   { id: "extemporaneo", label: "Cumplido extemporaneo" },
-];
-
-const handleStateChange = (selected) => {
-   console.log("Active filters:", selected);
-};
+import getDemands from "@/services/demands";
 
 const Searchbar = () => {
    const [filterOpen, setFilterOpen] = useState(false);
-   const [accordionOpen, setAccordionOpen] = useState(false);
+   const [demands, setDemands] = useState([]);
+   const [openAccordion, setOpenAccordion] = useState(null);
+
+   useEffect(() => {
+      const getAllDemands = async () => {
+         try {
+            const [typesRes, statusesRes, clientsRes] = await Promise.all([
+               getDemands("/available_demand_types"),
+               getDemands("/available_statuses"),
+               getDemands("/available_clients"),
+            ]);
+
+            const demandsFilters = [
+               { title: "Cliente", options: clientsRes },
+               { title: "Estado", options: statusesRes },
+               { title: "Tipo", options: typesRes },
+            ];
+            console.log(demandsFilters);
+            setDemands(demandsFilters);
+         } catch (err) {
+            setError(err);
+            console.error(err);
+         }
+      };
+
+      getAllDemands();
+   }, []);
 
    const handleOpen = () => {
       setFilterOpen(!filterOpen);
@@ -40,18 +58,34 @@ const Searchbar = () => {
                <p className="">Filtrar por</p>
             </button>
             <div
-               className={`absolute flex flex-col top-[3rem] right-0 left-0 bg-white px-4 py-3 shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm gap-3 transform transition-all duration-300 origin-top
-                  ${
-                     filterOpen
-                        ? "opacity-100 scale-100"
-                        : "opacity-0 scale-95 pointer-events-none"
-                  }
-               `}
+               className={`absolute flex flex-col top-[3rem] right-0 left-0 bg-white px-2 py-3 shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm transform transition-all duration-300 origin-top rounded-lg gap-3 max-h-[80vh]
+      ${
+         filterOpen
+            ? "opacity-100 scale-100"
+            : "opacity-0 scale-95 pointer-events-none"
+      }
+   `}
             >
-               <Accordion title="Estado">
-                  <FilterOptions filtersData={stateFilters} />
-               </Accordion>
-               <PrimaryButton>Aplicar Filtros</PrimaryButton>
+               {demands?.map((item) => (
+                  <Accordion
+                     key={item.title}
+                     title={item.title}
+                     isOpen={openAccordion === item.title}
+                     onToggle={() =>
+                        setOpenAccordion(
+                           openAccordion === item.title ? null : item.title
+                        )
+                     }
+                  >
+                     <FilterOptions filtersData={item.options} />
+                  </Accordion>
+               ))}
+
+               <div className="bg-white sticky bottom-0">
+                  <PrimaryButton className="w-full rounded-md">
+                     Aplicar Filtros
+                  </PrimaryButton>
+               </div>
             </div>
          </div>
       </div>

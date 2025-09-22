@@ -1,29 +1,24 @@
 import Arrow from "@/assets/arrow.svg";
-import { useState } from "react";
 
-const Accordion = ({ title, children }) => {
-   const [open, setOpen] = useState(false);
-
+const Accordion = ({ title, children, isOpen, onToggle }) => {
    return (
       <>
          <div
-            className="flex border-b-1 border-black-divisor w-full justify-between cursor-pointer"
-            onClick={() => setOpen(!open)}
+            className="flex border-b-1 border-black-divisor w-full justify-between cursor-pointer px-4 py-3"
+            onClick={onToggle}
          >
-            <div className="relative leading-[2.4] tracking-tightest">
-               {title}
-            </div>
+            <div className="relative tracking-tightest">{title}</div>
             <img
                src={Arrow}
                alt=""
                className={`transition-transform duration-300 ${
-                  open ? "rotate-180" : "rotate-0"
+                  isOpen ? "rotate-180" : "rotate-0"
                }`}
             />
          </div>
          <div
-            className={`flex overflow-hidden transition-[max-height] duration-300 ease-in-out ${
-               open ? "h-auto m-2" : "h-0 m-0"
+            className={`flex transition-[max-height] duration-300 ease-in-out min-h-16 h-min overflow-scroll ${
+               isOpen ? "h-auto m-2 max-h-[70vh]" : "h-0 m-0 hidden"
             }`}
          >
             {children}

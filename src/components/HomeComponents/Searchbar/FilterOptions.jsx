@@ -4,7 +4,7 @@ import Check from "@/assets/check.svg";
 const CustomCheckbox = ({ checked }) => {
    return (
       <span
-         className={`flex justify-center items-center w-[30px] h-[30px] rounded-3xl cursor-pointer
+         className={`flex justify-center items-center min-w-[30px] min-h-[30px] rounded-3xl cursor-pointer
         ${checked ? "" : "hover:bg-green-hover"}`}
       >
          <span
@@ -17,7 +17,7 @@ const CustomCheckbox = ({ checked }) => {
    );
 };
 
-const Filter = ({ onChange, filtersData = [] }) => {
+const FilterOptions = ({ onChange, filtersData = [] }) => {
    const [selected, setSelected] = useState([]);
 
    const toggleFilter = (id) => {
@@ -47,7 +47,7 @@ const Filter = ({ onChange, filtersData = [] }) => {
                      className="sr-only"
                   />
                   <CustomCheckbox checked={checked} />
-                  <span>{filter.label}</span>
+                  <span className="capitalize">{filter.name}</span>
                </label>
             );
          })}
@@ -55,4 +55,4 @@ const Filter = ({ onChange, filtersData = [] }) => {
    );
 };
 
-export default Filter;
+export default FilterOptions;

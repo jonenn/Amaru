@@ -6,7 +6,7 @@ import LogOutButton from "@/components/SideMenu/LogOutButton";
 const SideMenu = ({ className }) => {
    return (
       <nav
-         className={`${className} flex flex-col gap-2 w-[63px] px-1 pt-3 pb-5 box-content justify-between items-center`}
+         className={`${className} flex flex-col gap-2 max-w-[63px] px-1 pt-3 pb-5 justify-between items-center`}
       >
          <div className="flex flex-col gap-16 w-full">
             <LogoSection />

@@ -20,10 +20,10 @@ const CustomCheckbox = ({ checked }) => {
 const FilterOptions = ({ onChange, filtersData = [] }) => {
    const [selected, setSelected] = useState(null);
 
-   const selectFilter = (id) => {
-      setSelected(id);
-      onChange?.(id);
-      console.log(id);
+   const selectFilter = (filter) => {
+      setSelected(filter.id);
+      onChange?.(filter);
+      console.log(filter.id);
    };
 
    return (
@@ -38,7 +38,7 @@ const FilterOptions = ({ onChange, filtersData = [] }) => {
                   <input
                      type="radio"
                      checked={checked}
-                     onChange={() => selectFilter(filter.id)}
+                     onChange={() => selectFilter(filter)}
                      className="sr-only"
                   />
                   <CustomCheckbox checked={checked} />

@@ -1,4 +1,3 @@
-import Filter from "@/assets/filter.svg";
 import { useEffect, useState } from "react";
 import PrimaryButton from "@/components/PrimaryButton";
 import Accordion from "./Accordion";
@@ -6,11 +5,15 @@ import FilterOptions from "./FilterOptions";
 import getDemands from "@/services/demands";
 import SearchInput from "./SearchInput";
 import FilterButton from "./FilterButton";
+import { useDispatch } from "react-redux";
+import { setCardData } from "@/features/cards/cardsSlice";
 
 const Searchbar = () => {
    const [filterOpen, setFilterOpen] = useState(false);
    const [demands, setDemands] = useState([]);
    const [openAccordion, setOpenAccordion] = useState(null);
+   const [selectedFilters, setSelectedFilters] = useState({});
+   const dispatch = useDispatch();
 
    useEffect(() => {
       const getAllDemands = async () => {
@@ -22,11 +25,10 @@ const Searchbar = () => {
             ]);
 
             const demandsFilters = [
-               { title: "Cliente", options: clientsRes },
-               { title: "Estado", options: statusesRes },
-               { title: "Tipo", options: typesRes },
+               { title: "Cliente", key: "client", options: clientsRes },
+               { title: "Estado", key: "status", options: statusesRes },
+               { title: "Tipo", key: "demandType", options: typesRes },
             ];
-            console.log(demandsFilters);
             setDemands(demandsFilters);
          } catch (err) {
             console.error(err);
@@ -36,9 +38,18 @@ const Searchbar = () => {
       getAllDemands();
    }, []);
 
-   const handleOpen = () => {
-      setFilterOpen(!filterOpen);
-      console.log("It is working!");
+   const handleFilterChange = (key, filter) => {
+      setSelectedFilters((prev) => ({
+         ...prev,
+         [key]: filter.name,
+      }));
+   };
+
+   const applyFilters = async () => {
+      const query = new URLSearchParams(selectedFilters).toString();
+      const res = await getDemands(`/demands?${query}`);
+      console.log("Filtered results:", res);
+      dispatch(setCardData(res));
    };
 
    return (
@@ -66,12 +77,20 @@ const Searchbar = () => {
                         )
                      }
                   >
-                     <FilterOptions filtersData={item.options} />
+                     <FilterOptions
+                        filtersData={item.options}
+                        onChange={(filter) =>
+                           handleFilterChange(item.key, filter)
+                        }
+                     />
                   </Accordion>
                ))}
 
                <div className="bg-white sticky bottom-0">
-                  <PrimaryButton className="w-full rounded-md">
+                  <PrimaryButton
+                     className="w-full rounded-md"
+                     onClick={applyFilters}
+                  >
                      Aplicar Filtros
                   </PrimaryButton>
                </div>

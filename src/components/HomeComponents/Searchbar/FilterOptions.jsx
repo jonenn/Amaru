@@ -18,32 +18,27 @@ const CustomCheckbox = ({ checked }) => {
 };
 
 const FilterOptions = ({ onChange, filtersData = [] }) => {
-   const [selected, setSelected] = useState([]);
+   const [selected, setSelected] = useState(null);
 
-   const toggleFilter = (id) => {
-      let newSelected;
-      if (selected.includes(id)) {
-         newSelected = selected.filter((item) => item !== id);
-      } else {
-         newSelected = [...selected, id];
-      }
-      setSelected(newSelected);
-      onChange?.(newSelected);
+   const selectFilter = (id) => {
+      setSelected(id);
+      onChange?.(id);
+      console.log(id);
    };
 
    return (
       <div className="flex flex-col gap-2">
          {filtersData.map((filter) => {
-            const checked = selected.includes(filter.id);
+            const checked = selected === filter.id;
             return (
                <label
                   key={filter.id}
                   className="flex items-center cursor-pointer select-none"
                >
                   <input
-                     type="checkbox"
+                     type="radio"
                      checked={checked}
-                     onChange={() => toggleFilter(filter.id)}
+                     onChange={() => selectFilter(filter.id)}
                      className="sr-only"
                   />
                   <CustomCheckbox checked={checked} />

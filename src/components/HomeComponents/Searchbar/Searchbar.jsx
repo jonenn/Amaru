@@ -93,6 +93,9 @@ const Searchbar = () => {
             `}
                onClick={(e) => e.stopPropagation()}
             >
+               <h4 className="text-lg text-black-main font-bold md:hidden ml-3 py-2 leadin-4 tracking-tightest">
+                  Filtrar por
+               </h4>
                {demands?.map((item) => (
                   <Accordion
                      key={item.title}
@@ -113,7 +116,11 @@ const Searchbar = () => {
                   </Accordion>
                ))}
 
-               <div className="bg-white sticky bottom-0 flex gap-2">
+               <div
+                  className={`bg-white sticky bottom-0 flex gap-2 ${
+                     openAccordion ? '' : 'mt-45 md:mt-0'
+                  }`}
+               >
                   <PrimaryButton
                      className="w-full rounded-md"
                      onClick={applyFilters}

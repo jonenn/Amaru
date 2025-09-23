@@ -44,6 +44,21 @@ const Home = () => {
       getAllDemands();
    }, []);
 
+   useEffect(() => {
+      const fetchFilteredCards = async () => {
+         const params = new URLSearchParams();
+         Object.entries(filters).forEach(([key, values]) => {
+            values.forEach((value) => params.append(key, value));
+         });
+
+         const query = params.toString();
+         const res = await getDemands(`/demands?${query}`);
+         dispatch(setCardData(res));
+      };
+
+      fetchFilteredCards();
+   }, [filters, dispatch]);
+
    const handleClick = (id) => {
       dispatch(setOpenModal());
       console.log(id);
@@ -62,11 +77,12 @@ const Home = () => {
       );
    }, [cardData, searchTerm]);
 
-   const activeFilters = Object.entries(filters).flatMap(([key, values]) =>
-      values.map((value) => {
-         console.log(value);
-         return { key, value };
-      })
+   const activeFilters = Object.entries(filters).reduce(
+      (acc, [key, values]) => {
+         values.forEach((value) => acc.push({ key, value }));
+         return acc;
+      },
+      []
    );
 
    return (
@@ -85,17 +101,11 @@ const Home = () => {
                   {activeFilters.map(({ key, value }) => (
                      <span
                         key={`${key}-${value}`}
-                        className="flex items-center bg-green-filter text-white py-2 pl-4 pr-4 rounded-4xl tracking-tightest leading-4 font-normal gap-2 capitalize cursor-pointer max-h-min"
-                        onClick={() =>
-                           dispatch(
-                              toggleFilter({ key, filter: { name: value } })
-                           )
-                        }
+                        className="flex items-center bg-green-filter text-white py-2 pl-4 pr-4 rounded-4xl gap-2 capitalize cursor-pointer"
+                        onClick={() => dispatch(toggleFilter({ key, value }))}
                      >
                         {value}
-                        <span className="ml-1 text-white hover:text-gray-200">
-                           ×
-                        </span>
+                        <span className="ml-1 hover:text-gray-200">×</span>
                      </span>
                   ))}
                </div>

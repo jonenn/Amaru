@@ -1,21 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-   client: [],
-   status: [],
-   demandType: [],
-};
-
 const filtersSlice = createSlice({
    name: 'filtering',
-   initialState,
+   initialState: {
+      client: [],
+      status: [],
+      demandType: [],
+   },
    reducers: {
       toggleFilter(state, action) {
-         const { key, filter } = action.payload;
-         if (state[key].includes(filter.name)) {
-            state[key] = state[key].filter((f) => f !== filter.name);
+         const { key, value } = action.payload;
+         if (state[key].includes(value)) {
+            state[key] = state[key].filter((f) => f !== value);
          } else {
-            state[key].push(filter.name);
+            state[key].push(value);
          }
       },
       setFilters(state, action) {

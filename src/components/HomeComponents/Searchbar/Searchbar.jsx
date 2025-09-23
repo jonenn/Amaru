@@ -16,7 +16,6 @@ const Searchbar = () => {
    const dispatch = useDispatch();
    const selectedFilters = useSelector((state) => state.filtering);
    const [localSelected, setLocalSelected] = useState(selectedFilters);
-   console.log('locally selected', localSelected);
 
    useEffect(() => {
       const getAllDemands = async () => {
@@ -53,7 +52,7 @@ const Searchbar = () => {
 
       const params = new URLSearchParams();
       Object.entries(localSelected).forEach(([key, values]) => {
-         values.forEach((v) => params.append(key, v));
+         values.forEach((value) => params.append(key, value));
       });
 
       const query = params.toString();
@@ -79,19 +78,19 @@ const Searchbar = () => {
 
             <div
                className={`
-            fixed md:absolute flex flex-col bottom-0 md:bottom-auto md:top-[3rem] right-0 left-0 overflow-y-auto bg-white px-2 py-3
-            shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm transform transition-all duration-300 origin-top md:rounded-lg gap-3 max-h-[70vh] z-50
-            ${
-               filterOpen
-                  ? 'opacity-100 translate-y-0 scale-100'
-                  : 'opacity-0 top-[200vh] scale-95 pointer-events-none'
-            }
-            md:${
-               filterOpen
-                  ? 'opacity-100 scale-100 translate-y-0'
-                  : 'opacity-0 scale-95 pointer-events-none'
-            }
-          `}
+               fixed md:absolute flex flex-col bottom-0 md:bottom-auto md:top-[3rem] right-0 left-0 overflow-y-auto bg-white px-2 py-3
+               shadow-[0_4px_4px_0_rgba(87,87,87,0.1)] text-sm transform transition-all duration-300 origin-top md:rounded-lg gap-3 max-h-[70vh] z-50
+               ${
+                  filterOpen
+                     ? 'opacity-100 translate-y-0 scale-100'
+                     : 'opacity-0 top-[200vh] scale-95 pointer-events-none'
+               }
+               md:${
+                  filterOpen
+                     ? 'opacity-100 scale-100 translate-y-0'
+                     : 'opacity-0 scale-95 pointer-events-none'
+               }
+            `}
                onClick={(e) => e.stopPropagation()}
             >
                {demands?.map((item) => (
@@ -117,7 +116,7 @@ const Searchbar = () => {
                <div className="bg-white sticky bottom-0 flex gap-2">
                   <PrimaryButton
                      className="w-full rounded-md"
-                     onClick={() => applyFilters(localSelected)}
+                     onClick={applyFilters}
                      disabled={!hasFilters}
                   >
                      Aplicar Filtros
